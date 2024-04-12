@@ -1,18 +1,19 @@
-# 09 - Route Groups
+# 21- Programmatic Routing
 
-We use `( )` to create route groups.
-
-This it as a group rather than a route
-
-For example:
-
+For simple links we can use the following:
 ```bash
-├───(auth)
-│   ├───login
-|   |   └───page.tsx
-│   ├───register
-|   |   └───page.tsx
-│   ├───forgotPassword
-|   |   └───page.tsx
+import Link from "next/link";
+
+
+<Link href={`${params.productId}/reviews/1`}>See Reviews</Link>
 ```
 
+For routing programmatically:
+```bash
+import { useRouter } from "next/navigation";
+
+const router = useRouter();
+router.push("/");
+
+
+```
