@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 09 - Catch all segment routes
 
-## Getting Started
+# Single Dynamic routes
 
-First, run the development server:
+We use `[ ]` to capture dynamic routes.
+
+For example:
+
+If route is localhost/docs/docId,
+
+folder structure should look like this:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├───docs
+│   ├───[docId]
+|   |
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You will be to access value via `params.docId`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Catch-all Dynamic routes
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We use `[...slug]` to capture an array list string of dynamic routes.
 
-## Learn More
+For example:
 
-To learn more about Next.js, take a look at the following resources:
+If route is localhost/docs/docId/1/details/200,
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+├───docs
+│   ├───[...slug]
+|   |   |
+|   |   ├───page.tsx
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+We can access the following via `params.slug[]`
 
-## Deploy on Vercel
+```bash
+console.log(params.slug);
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Output:
+[ 'docId', '1', 'details', '200']
+```
